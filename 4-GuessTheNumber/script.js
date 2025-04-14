@@ -60,10 +60,10 @@ function checkGuess(guess) {
  
 // this function wll display all the Dom result of our guess on our index html page
 function displayGuess(guess) {
-  userInput.value = '';
-  guessSlot.innerHTML += `${guess}, `;
-  numGuess++;
-  remaining.innerHTML = `${11 - numGuess} `;
+  userInput.value = ''; // setting the userInput value i.e the value entereed by user to again empty value so user can enter new value to guess
+  guessSlot.innerHTML += `${guess}, `; // enterting the guesses me made into html 
+  numGuess++;  // increasing the count of no of guesses 
+  remaining.innerHTML = `${11 - numGuess} `; // remaning no of guesses left by substracting numguess from 11 
 }
  
 // this function will display the low or high message on our DOM
@@ -73,18 +73,18 @@ function displayMessage(message) {
 
 // function ending game 
 function endGame() {
-  userInput.value = '';
-  userInput.setAttribute('disabled', '');
-  p.classList.add('button');
-  p.innerHTML = `<h2 id="newGame">Start new Game</h2>`;
-  startOver.appendChild(p);
-  playGame = false;
-  newGame();
+  userInput.value = '';  // setting the userInput value to zero 
+  userInput.setAttribute('disabled', '');  // setting the attribute to disabled for userInput so when we have made our 10 guesses or we get the correct guess then it wont accept any new more userInput values from sumbit button and the submit button  wont work
+  p.classList.add('button'); // adding another button so start new game so when we click on it we can end the game and at the same time start a new one or if we guessed the correct answer or 10 guesses are over then we can click on new game button and start new game 
+  p.innerHTML = `<h2 id="newGame">Start new Game</h2>`; 
+  startOver.appendChild(p); // adding the startOver text into our p tag
+  playGame = false; // stopping the game 
+  newGame(); // and then running the new game 
 }
 
 // fucntion for starting new game 
 function newGame() {
-  const newGameButton = document.querySelector('#newGame');
+  const newGameButton = document.querySelector('#newGame'); // selecting the new game button we made in endgame function
   newGameButton.addEventListener('click', function (e) {
     randomNumber = parseInt(Math.random() * 100 + 1);
     prevGuess = [];
@@ -92,9 +92,9 @@ function newGame() {
     guessSlot.innerHTML = '';
     remaining.innerHTML = `${11 - numGuess} `;
     userInput.removeAttribute('disabled');
-    startOver.removeChild(p);
+    startOver.removeChild(p); // reseting the start over text in the para tag 
 
-    playGame = true;
+    playGame = true; // setting the playgame to true again 
   });
 }
 
